@@ -6,7 +6,7 @@ const tipoMuestraPost = async (req, res) => {
   const { tipos } = req.body;
   const tipoMuestra = new TipoMuestra({ tipos });
   await tipoMuestra.save();
-  res.json({
+  res.json({  
     msg: "Muestra agregada",
   });
 };

@@ -26,15 +26,16 @@ router.get("/departamento", [
 router.get("/ciudadnombre", [
     check('codciudad', "el codigo de la ciudad es obligatorio").not().isEmpty(),
     check('codciudad').custom(HelpersCiudad.existeCiudadById)
-], buscarCiudadNombreGet)
+], buscarCiudadCodigoGet)
 
 router.get("/departamentonombre", [
     check('departamento', "El nombre del departamento es requerido")
 ], buscarDepartamentoNombreGet)
 
-router.get("/municipio", [
-    check('ciudad', "La ciudad es obligatoria").not().isEmpty(),
+router.get("/:Ciudad", [
+    
+    //check('ciudad', "La ciudad es obligatoria").not().isEmpty(),
     validarCampos
-], buscarCiudadCodigoGet)
+], buscarCiudadNombreGet)
 
 export default router

@@ -1,7 +1,7 @@
 import Ciudad from "../models/ciudad.js";
 import Log from "../models/log.js";
-    
-   
+
+
 const ciudadPost = async (req, res) => {
     const { coddepartamento, departamento, ciudad, codciudad } = req.body
     const ciudadPost = new Ciudad({ coddepartamento, departamento, ciudad, codciudad })
@@ -11,9 +11,9 @@ const ciudadPost = async (req, res) => {
     const navegador = req.headers['user-agent']
     const ip = req.socket.remoteAddress
     const log = new Log({ idUsuario, idPost, navegador, ip })
-    await log.save()   
-                 
-    res.json({   
+    await log.save()
+
+    res.json({
         "msg": "Registro Exitoso"
     })
 }
@@ -28,7 +28,7 @@ const ciudadPut = async (req, res) => {
 }
 
 const ciudadGetListarTodos = async (req, res) => {
-    const ciudad = await Ciudad.find()
+    const ciudad = await Ciudad.find({});
     res.json({
         ciudad
     })
@@ -61,19 +61,16 @@ const buscarDepartamentoNombreGet = async (req, res) => {
 }
 const buscarCiudadNombreGet = async (req, res) => {
     const { ciudad } = req.query;
-    const ciudades = await Ciudad.find(
-        //{nombre:new RegExp(query,"i")}
-        {
-            $or: [
-                { ciudad: new RegExp(ciudad, "i") },
-            ],
-            $or: [
-                { c }
-            ]
-        }
-    )
-    res.json({ ciudades })
-}
+  const ciudadesr = await Ciudad.find({
+    
+     ciudad
+    
+    
+  });
+  res.json(
+    ciudadesr)
+};
+
 
 export {
     ciudadDepartamentoGet, ciudadGetListarTodos, ciudadPut, ciudadPost

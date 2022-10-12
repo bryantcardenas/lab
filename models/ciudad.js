@@ -1,10 +1,11 @@
 import mongoose from 'mongoose';
 
 const CiudadSchema = new mongoose.Schema({
-    departamento: { type: String, required: true },
-    coddepartamento: { type: String, required: true },
-    ciudad: { type: String, required: true },
-    codciudad: { type: String, required: true },
+    CodDepartamento: { type: String, required: true },
+    Departamento: { type: String, required: true },
+    CodCiudad: { type: String, required: true },
+    Ciudad: { type: String, required: true },
+    
 
 })
 
