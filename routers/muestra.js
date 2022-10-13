@@ -6,6 +6,7 @@ import HelpersMuestra from "../helpers/muestra.js";
 import {   datosMuestraPost, muestraGetBuscar, muestraGetBuscarCodigo, muestraGetBuscarTipo, muestraPutActivar, muestraPutEditar, muestraPutInactivar, muestrasGetBuscarMunDpto } from "../controllers/muestra.js";
 import { validarRol } from "../middlewares/validar-rol.js";
 import HerlpersCotizacion from "../helpers/cotizacion.js";
+import HelpersCiudad from "../helpers/ciudad.js";
 // import usuario from "../models/usuario.js";
 // import cotizacion from "../models/cotizacion.js";
 // import ciudad from "../models/ciudad.js";
@@ -31,8 +32,6 @@ router.put("/editar/:id", [
     check('fechaRecoleccion', "No es un email valido").isEmail(),
     check('cotizacion', "Es Obligatorio este campo").not().isEmpty(),
     // check('cotizacion',"el id del tipo de cotizacion es requerido").isMongoId(cotizacion),
-
-
     validarRol("Director", "Auxiliar",),
     validarCampos
 ], muestraPutEditar);
@@ -76,9 +75,9 @@ router.get("/buscarTipo/:id", [
     check('id').custom(HelpersMuestra.existeMuestraById),
     validarCampos
 ], muestraGetBuscarTipo)
+  
 
-
-router.get("/buscarMuni/:id", [
+router.get("/buscarMuni", [
     validarJWT,
     validarRol("director", "auxiliar","cientifico","recepcionista"),
     validarCampos

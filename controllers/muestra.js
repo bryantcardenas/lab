@@ -35,16 +35,7 @@ const numeros = (codMuestra) => {
         }
     }
 }
-// const crearConsecutivoM = async (req, res) => {
-//     const { consecutivoMuestra } = req.body;
-//     const consecutivoo = new Consecutivo({ consecutivoMuestra })
-//     await consecutivoo.save()
-//     console.log(req);
-//     res.json({
-//         "msg": "Consecutivo Creado"
-//     })
 
-// }
 const datosMuestraPost=async(req,res)=>{
     const consecutivo=await Consecutivo.findOne()
     if(consecutivo){
