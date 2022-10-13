@@ -29,7 +29,7 @@ router.put("/:id", [
     check('password', "Es Obligatorio este campo").not().isEmpty(),
     check('password', "Debe tener más de 8 caracteres").isLength({ min: 8 }),
     check('rol', "Es Obligatorio el rol").not().isEmpty(),
-    validarRol("Director", "Auxiliar",),
+    validarRol("director", "auxiliar",),
     validarCampos
 ], usuarioPutEditar);
 
@@ -44,21 +44,21 @@ router.post("/login", [
 //ya....buscar todos
 router.get("/b", [
     validarJWT,
-    validarRol("Director", "Auxiliar",),
+    validarRol("director", "auxiliar",),
     validarCampos
 ], usuarioGetBuscar);
 
 //ya....buscar nombre, email, telefono,documento y rol 
 router.get("/NoE", [
     validarJWT,
-    validarRol("Director", "Auxiliar",),
+    validarRol("director", "auxiliar",),
     validarCampos
 ], usuarioGetBuscarNoE);
 
 //ya....buscar por id 
 router.get("/buscarid/:id", [
     validarJWT,
-    validarRol("Director", "Cientifico", "Auxiliar",),
+    validarRol("director", "cientifico", "auxiliar",),
     check('id').isMongoId(),
     validarCampos
 ], usuarioGetBuscarid)
@@ -66,7 +66,7 @@ router.get("/buscarid/:id", [
 //ya....buscar porciudad
 router.get("/ciudad/:ciudad", [
     validarJWT,
-    validarRol("Director", "Auxiliar",),
+    validarRol("director", "auxiliar",),
     // check('Ciudad',"Es Obligatorio este campo").not().isEmpty(),
     check('ciudad', "no es una ciudad ").isMongoId(),
 
@@ -77,14 +77,14 @@ router.get("/ciudad/:ciudad", [
 //ya....
 router.put("/activar/:id", [
     validarJWT,
-    validarRol("Director"),
+    validarRol("director"),
     check('id').isMongoId(),
     validarCampos
 ], usuarioPutActivar);
 //ya....
 router.put("/inactivar/:id", [
     validarJWT,
-    validarRol("Director"),
+    validarRol("director"),
     check('id').isMongoId(),
     validarCampos
 ], usuarioPutInactivar);
@@ -92,7 +92,7 @@ router.put("/inactivar/:id", [
 //ya....
 router.put("/vacaciones/:id", [
     validarJWT,
-    validarRol("Director"),
+    validarRol("director"),
     check('id').isMongoId(),
     validarCampos
 ], usuarioPutVacaciones);

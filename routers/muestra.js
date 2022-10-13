@@ -32,13 +32,13 @@ router.put("/editar/:id", [
     check('fechaRecoleccion', "No es un email valido").isEmail(),
     check('cotizacion', "Es Obligatorio este campo").not().isEmpty(),
     // check('cotizacion',"el id del tipo de cotizacion es requerido").isMongoId(cotizacion),
-    validarRol("Director", "Auxiliar",),
+    validarRol("director", "auxiliar",),
     validarCampos
 ], muestraPutEditar);
 
 router.put("/activar/:id", [
     validarJWT,
-    validarRol("Director"),
+    validarRol("director"),
     check('id').isMongoId(),
     check('id').custom(HelpersMuestra.existeMuestraById),
     validarCampos
@@ -47,7 +47,7 @@ router.put("/activar/:id", [
 
 router.put("/inactivar/:id", [
     validarJWT,
-    validarRol("Director"),
+    validarRol("director"),
     check('id').isMongoId(),
     check('id').custom(HelpersMuestra.existeMuestraById),
     validarCampos
@@ -57,7 +57,7 @@ router.put("/inactivar/:id", [
 // lista yaaaaaaaaaaaaaaaaaaaaaaaaaaa
 router.get("/buscar", [
     validarJWT,
-    //validarRol("Director", "Auxiliar","Cientifico","Recepcionista"),
+    validarRol("director", "auxiliar","cientifico","recepcionista"),
     validarCampos
 ], muestraGetBuscar);
 
